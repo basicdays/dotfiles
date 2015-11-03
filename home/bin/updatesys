@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+aptitude update
+aptitude safe-upgrade

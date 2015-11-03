@@ -1,0 +1,6 @@
+# A screen-256color based TERMINFO that adds the escape sequences for italic.
+screen-256color|screen with 256 colors,
+  sgr=\E[0%?%p6%t;1%;%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;m%?%p9%t\016%e\017%;,
+  smso=\E[7m, rmso=\E[27m,
+  sitm=\E[3m, ritm=\E[23m,
+  use=screen-256color,

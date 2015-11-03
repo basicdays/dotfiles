@@ -1,0 +1,16 @@
+set hlsearch
+set showmode
+set visualbell
+
+" mappings
+" ========
+let mapleader = ","
+
+" copy/paste
+vnoremap <leader>y "+y
+vnoremap <leader>d "+d
+nnoremap <leader>p "+p
+
+" misc
+nnoremap <leader><space> :noh<Enter>
+ 

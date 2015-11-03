@@ -1,0 +1,9 @@
+[user]
+	name = basicdays
+	email = info@basicdays.com
+[push]
+	default = simple
+[diff]
+	tool = kdiff3
+[merge]
+	tool = kdiff3
