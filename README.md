@@ -1,7 +1,7 @@
 BasicDay's Dot Files
 ====================
 
-To be used with andsens/homeshick. Requires a valid connection to GitHub over SSH.
+To be used with [andsens/homeshick](https://github.com/andsens/homeshick).
 
 The following bash script will provision a fresh machine.
 
