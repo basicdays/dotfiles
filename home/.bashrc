@@ -58,9 +58,6 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-#	if [ -f /usr/local/lib/python3.4/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#  	  source /usr/local/lib/python3.4/dist-packages/powerline/bindings/bash/powerline.sh
-#	fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -82,18 +79,16 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
 fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -l'
+alias ll='ls -alF'
 alias la='ls -A'
-#alias l='ls -CF'
 # list with paging
 lp() {
 	ls -lah --color $1 | less -R
@@ -119,6 +114,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Setup Node Version Manager
+if [ -d $HOME/.nvm ]; then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
+
 # Setup homeshick commands
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+if [ -d $HOME/.homesick ]; then
+	source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+fi
+
+# set tabstops to 4
+export LESS=FRXx4

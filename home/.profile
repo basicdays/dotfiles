@@ -21,6 +21,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+tabs 4
+
 # pip bash completion start
 _pip_completion()
 {
