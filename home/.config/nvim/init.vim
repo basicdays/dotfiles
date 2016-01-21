@@ -4,15 +4,15 @@ set runtimepath+=~/.config/nvim/bundle/neobundle.vim
 " set runtimepath+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim
 
 
-" NeoVundle Settings
+" NeoBundle Settings
 " ==================
 call neobundle#begin(expand('~/.config/nvim/bundle'))
 
-" let NeoVundle manage NeoVundle
+" let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Usage
-" NeoBundle 'ctrlpvim/ctrlp.vim'
+"NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'moll/vim-bbye'
 
@@ -45,7 +45,6 @@ let g:airline_powerline_fonts = 1
 " editor look
 " ===========
 set number
-" set relativenumber
 set showcmd
 " set nowrap
 

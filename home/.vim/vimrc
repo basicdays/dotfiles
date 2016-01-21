@@ -1,37 +1,44 @@
 " Environment Setup
 " =================
 set nocompatible
-set runtimepath+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/neobundle.vim
 set runtimepath+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim
 
 
-" Vundle Settings
+" NeoBundle Settings
 " ===============
-filetype off
-call vundle#begin()
+call neobundle#begin(expand('~/.vim/bundle'))
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+" let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Usage
+"NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'moll/vim-bbye'
 
 " File Types
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'wting/rust.vim'
-Plugin 'rodjek/vim-puppet'
+NeoBundleFetch 'evanmiller/nginx-vim-syntax'
+NeoBundleFetch 'wting/rust.vim'
+NeoBundleFetch 'rodjek/vim-puppet'
 
 " Revision Control
-Plugin 'tpope/vim-fugitive'
+NeoBundleFetch 'tpope/vim-fugitive'
 
 " View
-Plugin 'scrooloose/nerdtree'
+NeoBundleFetch 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 
 " End Vundle Loader
-call vundle#end()
+call neobundle#end()
 filetype plugin indent on
+NeoBundleCheck
 
 
 " powerline
 " ==========
 set laststatus=2
+set showtabline=2
 set noshowmode
 
 
@@ -39,9 +46,26 @@ set noshowmode
 " ===========
 set number
 set showcmd
+set nowrap
+
+
+" editor functionality
+" ====================
+" set undofile
+set hidden
+"set splitbelow
+"set splitright
+
+
+" search
+" ======
+"nnoremap / /\v
+"vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
 set incsearch
 set hlsearch
-set nowrap
 
 
 " whitespace
@@ -64,6 +88,26 @@ set tabstop=4
 " inputs
 " =====
 set mouse=a
+
+
+" mappings
+" ========
+" cmap w!! w !sudo tee > /dev/null %
+let mapleader = ","
+
+" buffers/windows
+nnoremap <leader>n :bnext<Enter>
+nnoremap <leader>p :bprevious<Enter>
+nnoremap <leader>c :bprevious\|bdelete #<Enter>
+
+" copy/paste
+vnoremap <leader>y "+y
+vnoremap <leader>d "+d
+" note: i_ctrl-q is an alternative to i_ctrl-v
+" inoremap <C-v> <C-r><C-p>+
+
+" misc
+nnoremap <leader><space> :noh<Enter>
 
 
 " syntax

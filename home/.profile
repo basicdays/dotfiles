@@ -21,7 +21,13 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-tabs 4
+#tabs 4
+
+# setup nvm
+if [ -s "$HOME/.nvm" ]; then
+	export NVM_DIR="$HOME/.nvm"
+	source "$NVM_DIR/nvm.sh"
+fi
 
 # pip bash completion start
 _pip_completion()

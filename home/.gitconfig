@@ -1,10 +1,11 @@
 [user]
-	name = basicdays
-	email = info@basicdays.com
+	name = psanchez
+	email = psanchez@rulester.com
 [push]
 	default = simple
 [diff]
 	tool = vimdiff
+	guitool = kdiff3
 [merge]
 	tool = vimdiff
 [difftool "vimdiff"]

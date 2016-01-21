@@ -87,11 +87,11 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -laFh'
+alias la='ls -aFh'
 # list with paging
 lp() {
-	ls -lah --color $1 | less -R
+	ls -laFh --color $1 | less -R
 }
 
 # Alias definitions.
