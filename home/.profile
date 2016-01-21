@@ -21,7 +21,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-#tabs 4
+tabs 4
 
 # setup nvm
 if [ -s "$HOME/.nvm" ]; then
