@@ -2,6 +2,12 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+reset="\[\033[0m\]"
+green="\[\033[1;32m\]"
+blue="\[\033[1;34m\]"
+cyan="\[\033[1;36m\]"
+
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -57,9 +63,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	PS1="${debian_chroot:+($debian_chroot)}${green}\u@\h${reset}:${blue}\w${reset}${cyan}\$(__git_ps1)${reset}\$ "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(__git_ps1)\$ "
 fi
 unset color_prompt force_color_prompt
 
@@ -128,3 +134,8 @@ fi
 
 # set tabstops to 4
 export LESS=FRXx4
+
+unset reset
+unset green
+unset blue
+unset cyan
