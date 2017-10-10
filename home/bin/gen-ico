@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 convert $1 -bordercolor white -border 0 \
 	\( -clone 0 -resize 16x16 \) \
 	\( -clone 0 -resize 32x32 \) \

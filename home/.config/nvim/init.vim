@@ -1,41 +1,38 @@
 " Environment Setup
 " =================
-set runtimepath+=~/.config/nvim/bundle/neobundle.vim
-" set runtimepath+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim
+
+" set runtimepath+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
 
 " NeoBundle Settings
 " ==================
-call neobundle#begin(expand('~/.config/nvim/bundle'))
 
-" let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Usage
-"NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'moll/vim-bbye'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'scrooloose/nerdcommenter'
+"Plug 'moll/vim-bbye'
 
 " File Types
-NeoBundle 'evanmiller/nginx-vim-syntax'
-NeoBundle 'wting/rust.vim'
-NeoBundle 'rodjek/vim-puppet'
+"Plug 'evanmiller/nginx-vim-syntax'
+"Plug 'wting/rust.vim'
+"Plug 'rodjek/vim-puppet'
 
 " Revision Control
-NeoBundle 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 
 " View
-NeoBundle 'bling/vim-airline'
-NeoBundle 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
+"Plug 'scrooloose/nerdtree'
 
-" End Vundle Loader
-call neobundle#end()
-filetype plugin indent on
-NeoBundleCheck
+" Finished
+call plug#end()
 
 
 " airline
 " =========
+
 set laststatus=2
 set noshowmode
 let g:airline#extensions#tabline#enabled = 1
@@ -44,6 +41,7 @@ let g:airline_powerline_fonts = 1
 
 " editor look
 " ===========
+
 set number
 set showcmd
 " set nowrap
@@ -51,6 +49,7 @@ set showcmd
 
 " editor functionality
 " ====================
+
 " set undofile
 set hidden
 "set splitbelow
@@ -59,6 +58,7 @@ set hidden
 
 " search
 " ======
+
 "nnoremap / /\v
 "vnoremap / /\v
 set ignorecase
@@ -70,12 +70,14 @@ set hlsearch
 
 " whitespace
 " ==========
+
 set list
 set listchars=eol:‹,tab:›\ ,trail:·,extends:»,precedes:«,nbsp:¬
 
 
 " tabs
 " ====
+
 set autoindent
 " set noexpandtab
 set copyindent
@@ -87,11 +89,13 @@ set tabstop=4
 
 " inputs
 " =====
+
 set mouse=a
 
 
 " mappings
 " ========
+
 " cmap w!! w !sudo tee > /dev/null %
 let mapleader = ","
 
@@ -122,5 +126,6 @@ nnoremap <leader><space> :noh<Enter>
 
 " syntax
 " ======
+
 syntax on
 
