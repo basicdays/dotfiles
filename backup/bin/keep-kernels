@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+set -e
+
+if [ ! "$#" -gt 0 ]; then
+	echo Please supply the kernel versions to purge
+	exit 1
+fi
+
+keep_command="aptitude keep"
+auto_command="aptitude unmarkauto"
+
+for version in "$@"; do
+	packages="linux-image-${version}-generic linux-image-extra-${version}-generic linux-signed-image-${version}-generic linux-headers-${version} linux-headers-${version}-generic"
+	keep_command="${command} ${packages}"
+	auto_command="${command} ${packages}"
+done
+
+${keep_command}
+${auto_command}

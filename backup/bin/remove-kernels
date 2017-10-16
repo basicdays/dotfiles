@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+set -e
+
+if [ ! "$#" -gt 0 ]; then
+	echo Please supply the kernel versions to purge
+	exit 1
+fi
+
+command="aptitude purge"
+
+for version in "$@"; do
+	command="${command} linux-image-${version}-generic linux-image-extra-${version}-generic linux-signed-image-${version}-generic linux-headers-${version} linux-headers-${version}-generic"
+done
+
+${command}

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+set -e
+
+aptitude search '~i linux-headers' '~i linux-image' '~i linux-signed-image'

@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'moll/vim-bbye'
 
 " File Types
-Plug 'evanmiller/nginx-vim-syntax'
+"Plug 'evanmiller/nginx-vim-syntax'
 Plug 'wting/rust.vim'
 "Plug 'rodjek/vim-puppet'
 

@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+proj_path=$HOME/Documents/wip/sourcingusa/sites/www.sourcingusa.com
+export DJANGO_SETTINGS_MODULE=www.settings.local
+export PYTHONPATH=${proj_path}
+
+cd ${proj_path}
+. .venv/bin/activate

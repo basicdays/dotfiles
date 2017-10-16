@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+convert $1 -define icon:auto-resize=64,48,32,16 favicon.ico
