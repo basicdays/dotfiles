@@ -9,12 +9,12 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash and .bashrc exists
-if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
-fi
-
 # set PATH so it includes user's local bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+# if running bash and .bashrc exists
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
 fi
