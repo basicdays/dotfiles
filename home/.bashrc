@@ -1,6 +1,14 @@
+#!/usr/bin/env sh
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 reset="\[\033[0m\]"
 green="\[\033[1;32m\]"
@@ -8,11 +16,8 @@ blue="\[\033[1;34m\]"
 cyan="\[\033[1;36m\]"
 
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+# History
+# -------
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -25,6 +30,10 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+
+# General
+# -------
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -34,16 +43,39 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if [ -x /usr/bin/lesspipe ]; then
+    eval "$(SHELL=/bin/sh lesspipe)"
+fi
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+esac
+
+# Set default editor program
+export VISUAL=vim
+#export EDITOR=ex
+
+# set tabstop to 4
+tabs 4
+export LESS=x4
+
+
+# Color
+# -----
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|xterm-256color|screen-color|screen-256color) color_prompt=yes;;
+    xterm-color|xterm-256color|screen-color|screen-256color)
+        color_prompt=yes
+        ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -52,54 +84,29 @@ esac
 # force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null; then
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
+
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}${green}\u@\h${reset}:${blue}\w${reset}${cyan}\$(__git_ps1)${reset}\$ "
+    PS1="${debian_chroot:+($debian_chroot)}${green}\u@\h${reset}:${blue}\w${reset}${cyan}\$(__git_ps1)${reset}\$ "
+    # enable less colors
+    export LESS=R${LESS}
 else
-	PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(__git_ps1)\$ "
+    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(__git_ps1)\$ "
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -laFh'
-alias la='ls -aFh'
-# list with paging
-lp() {
-	ls -laFh --color $1 | less -R
-}
-
+# Bash Commands
+# -------------
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -113,29 +120,37 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
-# Setup Node Version Manager
-if [ -d $HOME/.nvm ]; then
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # Setup homeshick commands
 if [ -d $HOME/.homesick ]; then
-	source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+    source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
-# set tabstops to 4
-export LESS=FRXx4
+# enable powerline bash prompts
+if command -v python3 &> /dev/null; then
+    python_version=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    export LOCAL_PYTHON=$HOME/.local/lib/python${python_version}
+    if [ -d ${LOCAL_PYTHON}/site-packages/powerline ]; then
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        . $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    fi
+fi
+
+
+# cleanup
+# -------
 
 unset reset
 unset green
 unset blue
 unset cyan
+unset debian_chroot

@@ -4,9 +4,10 @@
 [push]
 	default = simple
 [diff]
-	tool = vimdiff
-	guitool = kdiff3
+	tool = kdiff3
 [merge]
-	tool = vimdiff
+	tool = kdiff3
 [difftool "vimdiff"]
 	cmd = vim -f -d -c \"wincmd l\" -c \"cd \\\"$GIT_PREFIX\\\"\" \"$LOCAL\" \"$REMOTE\"
+#[core]
+#	askpass = /usr/bin/ksshaskpass

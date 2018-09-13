@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -8,33 +9,12 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-	# include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-	fi
+# if running bash and .bashrc exists
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
+# set PATH so it includes user's local bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
-
-tabs 4
-
-# setup nvm
-if [ -s "$HOME/.nvm" ]; then
-	export NVM_DIR="$HOME/.nvm"
-	source "$NVM_DIR/nvm.sh"
-fi
-
-# pip bash completion start
-_pip_completion()
-{
-	COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-	               COMP_CWORD=$COMP_CWORD \
-	               PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip_completion pip
-# pip bash completion end

@@ -1,2 +1,17 @@
+# Editors
+/.idea/dataSources/
+/.idea/dictionaries/
+/.idea/dataSources.xml
 /.idea/workspace.xml
+/.idea/*.local.xml
 *.swp
+*.swo
+*.kate-swp
+
+# File Managers
+.DS_Store
+.directory
+Thumbs.db
+
+# Git
+*.orig

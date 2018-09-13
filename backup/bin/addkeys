@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-ssh-add ~/.ssh/dc414
-ssh-add ~/.ssh/aws-eb
 ssh-add ~/.ssh/id_rsa

@@ -9,8 +9,9 @@ let mapleader = ","
 " copy/paste
 vnoremap <leader>y "+y
 vnoremap <leader>d "+d
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
 nnoremap <leader>p "+p
 
 " misc
 nnoremap <leader><space> :noh<Enter>
- 

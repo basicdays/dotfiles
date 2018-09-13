@@ -1,0 +1,7 @@
+/* Place manually in actual directory.
+   Fixes form inputs from not appearing correctly when using dark system themes.
+ */
+input, textarea {
+	color: black;
+	background: white;
+}
