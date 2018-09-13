@@ -141,7 +141,7 @@ if command -v python3 &> /dev/null; then
         powerline-daemon -q
         POWERLINE_BASH_CONTINUATION=1
         POWERLINE_BASH_SELECT=1
-        . $HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+        . ${LOCAL_PYTHON}/site-packages/powerline/bindings/bash/powerline.sh
     fi
 fi
 
