@@ -36,4 +36,3 @@ if command -v xclip > /dev/null; then
 	alias xcopy='xclip -selection clip-board'
 	alias xpaste='xclip -selection clip-board -o'
 fi
-

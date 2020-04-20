@@ -57,6 +57,7 @@ set nowrap
 set hidden
 "set splitbelow
 "set splitright
+set backspace=indent,eol,start
 
 
 " search

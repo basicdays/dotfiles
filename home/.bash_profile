@@ -10,16 +10,12 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# set PATH so it includes user's local bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
 # finds "standard" python paths
 if command -v python3 > /dev/null; then
 	python_version=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-	if [ -d "$HOME/Library/Python/${python_version}" ]; then
-		export LOCAL_PYTHON_PATH=$HOME/Library/Python/${python_version}
+
+	if command -v brew > /dev/null && [ -d "$(brew --prefix)/lib/python${python_version}" ]; then
+		export LOCAL_PYTHON_PATH=$(brew --prefix)/lib/python${python_version}
 	elif [ -d "$HOME/.local/lib/python" ]; then
 		export LOCAL_PYTHON_PATH=$HOME/.local/lib/python
 	fi
@@ -30,14 +26,29 @@ if command -v python3 > /dev/null; then
 	elif [ -d "${LOCAL_PYTHON_PATH}/lib/python/site-packages" ]; then
 		export LOCAL_PYTHON_PACKAGES=${LOCAL_PYTHON_PATH}/lib/python/site-packages
 	fi
+fi
 
-	if [ -d "${LOCAL_PYTHON_PATH}/bin" ]; then
-    	PATH=${LOCAL_PYTHON_PATH}/bin:$PATH
+paths=(
+	/usr/local/opt/curl/bin
+	/usr/local/opt/gettext/bin
+	/usr/local/opt/redis@4.0/bin
+	/usr/local/mysql/bin
+	$HOME/.local/opt/apache-tomcat-9.0.24/bin
+	$HOME/.local/bin
+)
+
+for path in ${paths[@]}; do
+	if [ -d "${path}" ]; then
+		PATH="${path}:$PATH"
 	fi
+done
+
+if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
+	export NVM_DIR="$HOME/.nvm"
+	. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 fi
 
 # if running bash and .bashrc exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
-

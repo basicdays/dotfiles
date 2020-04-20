@@ -4,10 +4,20 @@
 [push]
 	default = simple
 [diff]
-	tool = vimdiff
+	tool = kdiff3
 [merge]
-	tool = vimdiff
+	tool = kdiff3
 [difftool "vimdiff"]
 	cmd = vim -f -d -c \"wincmd l\" -c \"cd \\\"$GIT_PREFIX\\\"\" \"$LOCAL\" \"$REMOTE\"
 #[core]
 #	askpass = /usr/bin/ksshaskpass
+[core]
+	excludesfile = /Users/paulsanchez/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/paulsanchez/.stCommitMsg
