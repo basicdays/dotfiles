@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+# shellcheck shell=bash
+# shellcheck disable=1090
+# shellcheck disable=1091
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -6,7 +8,7 @@
 
 # Docs on shell parameter expansion:
 # https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
-#
+
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
@@ -18,32 +20,10 @@ green="\[\033[1;32m\]"
 blue="\[\033[1;34m\]"
 cyan="\[\033[1;36m\]"
 
-raw_OS_NAME="$(uname -s)"
-case "${raw_OS_NAME}" in
-	Linux*)
-		OS_NAME=Linux
-		;;
-	Darwin*)
-		OS_NAME=MacOS
-		;;
-	CYGWIN*)
-		OS_NAME=Cygwin
-		;;
-	MINGW*)
-		OS_NAME=MinGw
-		;;
-	*)
-		OS_NAME="UNKNOWN:${unameOut}"
-esac
-unset raw_OS_NAME
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-	xterm-color|xterm-256color|screen-color|screen-256color)
-		COLOR_PROMPT=true
-		;;
-	*)
-		COLOR_PROMPT=false
+	xterm-color|*-256color) COLOR_PROMPT=true;;
+	*) COLOR_PROMPT=false;;
 esac
 
 
@@ -96,7 +76,7 @@ if [ "${COLOR_PROMPT}" = "true" ]; then
 	# enable less colors
 	export LESS=R${LESS}
 
-	if [ ${OS_NAME} = "MacOS" ]; then
+	if [ "${OS_SYSTEM}" = "MacOS" ]; then
 		# enable bsd ls colors
 		export CLICOLOR=1
 	fi
@@ -137,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # Setup homeshick commands
-if [ -d $HOME/.homesick ]; then
+if [ -d "$HOME/.homesick" ]; then
 	. "$HOME/.homesick/repos/homeshick/homeshick.sh"
 	. "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
@@ -145,9 +125,11 @@ fi
 # enable powerline bash prompts
 if command -v powerline-daemon > /dev/null && [ -f "${LOCAL_PYTHON_PACKAGES}/powerline/bindings/bash/powerline.sh" ]; then
 	powerline-daemon -q
+    # shellcheck disable=SC2034
 	POWERLINE_BASH_CONTINUATION=1
+    # shellcheck disable=SC2034
 	POWERLINE_BASH_SELECT=1
-	. ${LOCAL_PYTHON_PACKAGES}/powerline/bindings/bash/powerline.sh
+	. "${LOCAL_PYTHON_PACKAGES}/powerline/bindings/bash/powerline.sh"
 fi
 
 
@@ -158,4 +140,3 @@ unset reset
 unset green
 unset blue
 unset cyan
-
