@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+# shellcheck shell=sh
+# shellcheck disable=1090
 
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
@@ -10,43 +11,62 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# finds "standard" python paths
-if command -v python3 > /dev/null; then
-	python_version=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+# determine OS system (e.g. Linux, Mac, Windows)
+case "$(uname -s)" in
+    Linux*) export OS_SYSTEM=Linux;;
+    Darwin*) export OS_SYSTEM=MacOS;;
+    CYGWIN*) export OS_SYSTEM=Cygwin;;
+	MINGW*) export OS_SYSTEM=Mingw;;
+    *) export OS_SYSTEM=Unknown;;
+esac
 
-	if command -v brew > /dev/null && [ -d "$(brew --prefix)/lib/python${python_version}" ]; then
-		export LOCAL_PYTHON_PATH=$(brew --prefix)/lib/python${python_version}
-	elif [ -d "$HOME/.local/lib/python" ]; then
-		export LOCAL_PYTHON_PATH=$HOME/.local/lib/python
-	fi
-	unset python_version
 
-	if [ -d "${LOCAL_PYTHON_PATH}/site-packages" ]; then
-		export LOCAL_PYTHON_PACKAGES=${LOCAL_PYTHON_PATH}/site-packages
-	elif [ -d "${LOCAL_PYTHON_PATH}/lib/python/site-packages" ]; then
-		export LOCAL_PYTHON_PACKAGES=${LOCAL_PYTHON_PATH}/lib/python/site-packages
-	fi
-fi
+add_to_path() {
+    path_dir=$1
+    [ -d "${path_dir}" ] && [ -n "${PATH##*${path_dir}}" ] && [ -n "${PATH##*${path_dir}:*}" ]
+}
 
 paths=(
 	/usr/local/opt/curl/bin
 	/usr/local/opt/gettext/bin
 	/usr/local/opt/redis@4.0/bin
 	/usr/local/mysql/bin
+    $HOME/.local/lib/go/bin
+    $HOME/.local/cargo/bin
 	$HOME/.local/opt/apache-tomcat-9.0.24/bin
 	$HOME/.local/bin
 )
-
 for path in ${paths[@]}; do
-	if [ -d "${path}" ]; then
+	if add_to_path "${path}"; then
 		PATH="${path}:$PATH"
 	fi
 done
 
-if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
-	export NVM_DIR="$HOME/.nvm"
-	. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+unset paths
+unset add_to_path
+
+# finds "standard" python paths
+if command -v python3 > /dev/null; then
+    python_version=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+	if command -v brew > /dev/null && [ -d "$(brew --prefix)/lib/python${python_version}" ]; then
+		local_python_dir=$(brew --prefix)/lib/python${python_version}
+	elif [ -d "$HOME/.local/lib/python${python_version}" ]; then
+		local_python_dir=$HOME/.local/lib/python${python_version}
+	fi
+
+    if [ -d "${local_python_dir}/site-packages" ]; then
+        export LOCAL_PYTHON_PACKAGES=${local_python_dir}/site-packages
+    elif [ -d "${local_python_dir}/lib/python/site-packages" ]; then
+        export LOCAL_PYTHON_PACKAGES=${local_python_dir}/lib/python/site-packages
+    fi
+
+    unset python_version
+    unset local_python_dir
 fi
+
+# shellcheck disable=SC2034
+export GOPATH=${HOME}/.local/lib/go
 
 # if running bash and .bashrc exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then

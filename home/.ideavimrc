@@ -1,5 +1,9 @@
+set nogdefault
 set hlsearch
+set incsearch
+set number
 set showmode
+set ideajoin
 set visualbell
 
 " mappings
