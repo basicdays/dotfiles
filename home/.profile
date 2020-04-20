@@ -10,8 +10,17 @@
 #umask 022
 
 # set PATH so it includes user's local bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+GOPATH=$HOME/.local/lib/go
+if [ -d "$HOME/.local/lib/go/bin" ]; then
+    PATH="$HOME/.local/lib/go/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo/bin" ]; then
+    PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # if running bash and .bashrc exists

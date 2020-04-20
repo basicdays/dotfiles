@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -e
+
+#kquitapp5 plasmashell
+killall plasmashell
+kstart5 plasmashell
+kstart5 krunner

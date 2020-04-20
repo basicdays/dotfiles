@@ -64,7 +64,7 @@ set hidden
 "vnoremap / /\v
 set ignorecase
 set smartcase
-set gdefault
+"set gdefault
 set incsearch
 set hlsearch
 
