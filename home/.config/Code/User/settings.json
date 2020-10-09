@@ -81,5 +81,6 @@
     "explorer.autoReveal": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "vim.ignorecase": false
+    "vim.ignorecase": false,
+    "java.semanticHighlighting.enabled": true
 }

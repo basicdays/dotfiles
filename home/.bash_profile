@@ -20,6 +20,11 @@ case "$(uname -s)" in
     *) export OS_SYSTEM=Unknown;;
 esac
 
+export GOPATH="${HOME}/.local/lib/go"
+export CARGO_HOME="${HOME}/.local/opt/cargo"
+export POETRY_HOME="${HOME}/.local/opt/poetry"
+export PYENV_ROOT="${HOME}/.local/opt/pyenv"
+
 
 add_to_path() {
     path_dir=$1
@@ -31,11 +36,12 @@ paths=(
 	/usr/local/opt/gettext/bin
 	/usr/local/opt/redis@4.0/bin
 	/usr/local/mysql/bin
-    $HOME/.local/lib/go/bin
-    $HOME/.local/cargo/bin
-	$HOME/.local/opt/apache-tomcat-9.0.24/bin
+	$GOPATH/bin
+	$CARGO_HOME/bin
+	$POETRY_HOME/bin
 	$HOME/.local/bin
 )
+
 for path in ${paths[@]}; do
 	if add_to_path "${path}"; then
 		PATH="${path}:$PATH"
@@ -65,10 +71,41 @@ if command -v python3 > /dev/null; then
     unset local_python_dir
 fi
 
-# shellcheck disable=SC2034
-export GOPATH=${HOME}/.local/lib/go
+export NVM_DIR="${HOME}/.local/lib/nvm"
+# export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home"
+
+if command -v brew > /dev/null; then
+    path_dir=$(brew --prefix)/opt/nvm/nvm.sh
+    if [ -f "${path_dir}" ]; then
+        . "${path_dir}"
+    fi
+fi
 
 # if running bash and .bashrc exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
+fi
+
+tpc_exports=$HOME/Documents/wip/tpc/thepillclub_backend/local.exports
+if [ -f "${tpc_exports}" ]; then
+	. ${tpc_exports}
+fi
+unset tpc_exports
+export CATALINA_HOME=${HOME}/.local/opt/apache-tomcat-9.0.24
+export ORG_GRADLE_PROJECT_tomcatLocalWebAppPath=${CATALINA_HOME}
+
+if [ -d "$HOME/.profile.d" ]; then
+    for i in "$HOME"/.profile.d/*.sh; do
+        if [ -r "$i" ]; then
+            . "$i"
+        fi
+    done
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+if command -v jenv 1>/dev/null 2>&1; then
+	eval "$(jenv init -)"
 fi
