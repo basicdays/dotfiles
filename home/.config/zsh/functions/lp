@@ -9,5 +9,4 @@ function lp {
 	else
 		ll --color "$ls_path" | less
 	fi
-
 }

@@ -25,9 +25,7 @@ SAVEHIST=5000
 setopt CORRECT
 setopt CORRECT_ALL
 
-# Aliases and Functions
-
-test -f "$ZDOTDIR/aliases.zsh" && . "$ZDOTDIR/aliases.zsh"
+# Functions
 
 fpath+="$ZDOTDIR/functions"
 autoload lp
