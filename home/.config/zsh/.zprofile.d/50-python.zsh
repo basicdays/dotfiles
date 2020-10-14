@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
 # shellcheck shell=sh
 
+export POETRY_HOME=$HOME/.local/opt/poetry
+add_to_path "$POETRY_HOME/bin"
+
+export PYENV_ROOT=$HOME/.local/lib/pyenv
+
 find_py() {
     local python_version
     local local_python_dir
