@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+env_all() {
+	( setopt posixbuiltin; set; ) | less
+}
