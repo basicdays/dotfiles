@@ -4,7 +4,7 @@
 function lp {
 	local ls_path=${1:-.}
 
-	if [ "${OS_SYSTEM}" = "MacOS" ]; then
+	if [ "$OSSYSTEM" = "MacOS" ]; then
 		CLICOLOR_FORCE=1 ll "$ls_path" | less -R
 	else
 		ll --color "$ls_path" | less

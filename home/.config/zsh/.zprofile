@@ -4,7 +4,7 @@
 scandir() {
     local _dir=$1
     if [ -d "$_dir" ]; then
-        for file in $_dir/**/*; do
+        for file in $_dir/*; do
             if [ -f "$file" ]; then
                 . "$file"
             fi
