@@ -25,13 +25,6 @@ SAVEHIST=5000
 setopt CORRECT
 setopt CORRECT_ALL
 
-
-# Color
-
-export CLICOLOR=1
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
-
 # Aliases and Functions
 
 test -f "$ZDOTDIR/aliases.zsh" && . "$ZDOTDIR/aliases.zsh"
@@ -63,7 +56,6 @@ scandir() {
     local _dir=$1
     if [ -d "$_dir" ]; then
         for file in $_dir/*; do
-            echo $file
             if [ -f "$file" ]; then
                 . "$file"
             fi
