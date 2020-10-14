@@ -1,9 +1,14 @@
 #!/usr/bin/env zsh
 # shellcheck shell=sh
 
+if [ -n "$TMUX" ] && [ -x /usr/libexec/path_helper ]; then
+    PATH=""
+	eval `/usr/libexec/path_helper -s`
+fi
+
+# Add to PATH without accidentally duplicating the value
 add_to_path() {
     local path_dir=$1
-    return 0
     if [ -d "${path_dir}" ] && [ -n "${PATH##*${path_dir}}" ] && [ -n "${PATH##*${path_dir}:*}" ]; then
         PATH=$path_dir:$PATH
     fi

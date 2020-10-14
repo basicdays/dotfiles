@@ -5,6 +5,7 @@ export POETRY_HOME=$HOME/.local/opt/poetry
 add_to_path "$POETRY_HOME/bin"
 
 export PYENV_ROOT=$HOME/.local/lib/pyenv
+add_to_path "$PYENV_ROOT/bin"
 
 find_py() {
     local python_version
@@ -24,7 +25,7 @@ find_py() {
             export LOCAL_PYTHON_PACKAGES=${local_python_dir}/lib/python/site-packages
         fi
         if [ -d "$local_python_dir/bin" ]; then
-            export PATH=$local_python_dir/bin:$PATH
+            add_to_path "$local_python_dir/bin"
         fi
     fi
 }
