@@ -55,3 +55,20 @@ test -f $ZDOTDIR/zsh_completion.zsh && . $ZDOTDIR/zsh_completion.zsh
 export VISUAL=vim
 # set viins keymap
 bindkey -v
+
+
+# Scan .zshrc.d
+
+scandir() {
+    local _dir=$1
+    if [ -d "$_dir" ]; then
+        for file in $_dir/*; do
+            echo $file
+            if [ -f "$file" ]; then
+                . "$file"
+            fi
+        done
+    fi
+}
+scandir "$ZDOTDIR/.zshrc.d"
+unset scandir
