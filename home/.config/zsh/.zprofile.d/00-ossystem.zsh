@@ -1,10 +1,9 @@
-#!/usr/bin/env zsh
 # shellcheck shell=sh
 
 case "$(uname -s)" in
-    Linux*) export OSSYSTEM=Linux;;
-    Darwin*) export OSSYSTEM=MacOS;;
-    CYGWIN*) export OSSYSTEM=Cygwin;;
-    MINGW*) export OSSYSTEM=Mingw;;
-    *) export OSSYSTEM=Unknown;;
+    Linux*) OSSYSTEM=Linux;;
+    Darwin*) OSSYSTEM=MacOS;;
+    CYGWIN*) OSSYSTEM=Cygwin;;
+    MINGW*) OSSYSTEM=Mingw;;
+    *) OSSYSTEM=Unknown;;
 esac

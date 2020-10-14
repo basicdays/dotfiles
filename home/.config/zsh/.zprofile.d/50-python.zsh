@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # shellcheck shell=sh
 
 export POETRY_HOME=$HOME/.local/opt/poetry
