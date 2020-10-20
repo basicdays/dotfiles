@@ -1,10 +1,5 @@
 {
 	"common": {
 		"term_truecolor": true
-	},
-	"ext": {
-		"shell": {
-			"theme": "default_leftonly"
-		}
 	}
 }

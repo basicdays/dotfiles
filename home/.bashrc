@@ -76,7 +76,7 @@ if [ "${COLOR_PROMPT}" = "true" ]; then
 	# enable less colors
 	export LESS=R${LESS}
 
-	if [ "${OS_SYSTEM}" = "MacOS" ]; then
+	if [ "${OSSYSTEM}" = "MacOS" ]; then
 		# enable bsd ls colors
 		export CLICOLOR=1
 	fi

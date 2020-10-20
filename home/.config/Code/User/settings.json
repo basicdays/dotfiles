@@ -1,85 +1,62 @@
 {
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "editor.formatOnSave": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.mouseWheelZoom": true,
-    "editor.fontSize": 14,
-    "editor.tabCompletion": "on",
-    "editor.cursorBlinking": "phase",
-    "files.associations": {
-        "Dockerfile.*": "dockerfile"
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.fontSize": 14,
+  "editor.tabCompletion": "on",
+  "editor.cursorBlinking": "phase",
+  "editor.suggestSelection": "first",
+  "explorer.autoReveal": false,
+  "files.associations": {
+    "Dockerfile.*": "dockerfile"
+  },
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "vim.leader": ",",
+  "vim.statusBarColorControl": true,
+  "vim.textwidth": 120,
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": [":nohlsearch"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "y"],
+      "after": ["\"+", "+", "y"]
     },
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "vim.leader": ",",
-    "vim.statusBarColorControl": true,
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-    "vim.textwidth": 120,
-    "vim.hlsearch": true,
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "<space>"
-            ],
-            "commands": [
-                ":nohlsearch"
-            ]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "y"
-            ],
-            "after": [
-                "\"+",
-                "+",
-                "y"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "\"",
-                "+",
-                "d"
-            ]
-        }
-    ],
-    "vim.foldfix": true,
-    "workbench.tree.indent": 16,
-    "terminal.integrated.macOptionIsMeta": true,
-    "telemetry.enableTelemetry": false,
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "window.zoomLevel": 0,
-    "explorer.autoReveal": false,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "vim.ignorecase": false
+    {
+      "before": ["<leader>", "d"],
+      "after": ["\"", "+", "d"]
+    }
+  ],
+  "vim.foldfix": true,
+  "vim.ignorecase": false,
+  "terminal.integrated.macOptionIsMeta": true,
+  "telemetry.enableTelemetry": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 0,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "workbench.tree.indent": 16
 }

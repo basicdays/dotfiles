@@ -13,11 +13,11 @@
 
 # determine OS system (e.g. Linux, Mac, Windows)
 case "$(uname -s)" in
-    Linux*) export OS_SYSTEM=Linux;;
-    Darwin*) export OS_SYSTEM=MacOS;;
-    CYGWIN*) export OS_SYSTEM=Cygwin;;
-	MINGW*) export OS_SYSTEM=Mingw;;
-    *) export OS_SYSTEM=Unknown;;
+    Linux*) export OSSYSTEM=Linux;;
+    Darwin*) export OSSYSTEM=MacOS;;
+    CYGWIN*) export OSSYSTEM=Cygwin;;
+	MINGW*) export OSSYSTEM=Mingw;;
+    *) export OSSYSTEM=Unknown;;
 esac
 
 
