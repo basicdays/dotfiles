@@ -1,62 +1,63 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.cursorBlinking": "phase",
   "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.renderWhitespace": "boundary",
-  "editor.fontSize": 14,
-  "editor.tabCompletion": "on",
-  "editor.cursorBlinking": "phase",
   "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
   "explorer.autoReveal": false,
   "files.associations": {
     "Dockerfile.*": "dockerfile"
   },
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "vim.leader": ",",
-  "vim.statusBarColorControl": true,
-  "vim.textwidth": 120,
+  "telemetry.enableTelemetry": false,
+  "terminal.integrated.macOptionIsMeta": true,
+  "vim.foldfix": true,
   "vim.hlsearch": true,
+  "vim.ignorecase": false,
+  "vim.leader": ",",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "<space>"],
       "commands": [":nohlsearch"]
     }
   ],
+  "vim.statusBarColorControl": true,
+  "vim.textwidth": 120,
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "y"],
-      "after": ["\"+", "+", "y"]
+      "after": ["\"+", "+", "y"],
+      "before": ["<leader>", "y"]
     },
     {
-      "before": ["<leader>", "d"],
-      "after": ["\"", "+", "d"]
+      "after": ["\"", "+", "d"],
+      "before": ["<leader>", "d"]
     }
   ],
-  "vim.foldfix": true,
-  "vim.ignorecase": false,
-  "terminal.integrated.macOptionIsMeta": true,
-  "telemetry.enableTelemetry": false,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
-    "statusBar.noFolderBackground": "#005f5f",
-    "statusBar.debuggingBackground": "#005f5f"
+    "statusBar.debuggingBackground": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f"
   },
+  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.tree.indent": 16
 }

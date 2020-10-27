@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -Eeou pipefail
+
+branch=dev
+remote=origin
+
+main_branch=master
+develop_branch=dev
+
+confirm_delete() {
+	local gone_branch=$1
+	read -n 1 -r -p "Delete $gone_branch? (y/n) " confirm
+	echo
+	if [ "$confirm" = 'y' ]; then
+		git branch -D "$gone_branch"
+	fi
+}
+
+git fetch --prune "$remote"
+git branch --merged "$branch" | grep -E -v "(^\*|$main_branch|$develop_branch)" | xargs git branch -d || :
+for gone_branch in $(git branch -vv | awk '/: gone]/{print $1}'); do
+	confirm_delete "$gone_branch"
+done
