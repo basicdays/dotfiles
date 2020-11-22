@@ -54,9 +54,9 @@
   ],
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
-    "statusBar.background": "#007acc",
-    "statusBar.debuggingBackground": "#007acc",
-    "statusBar.noFolderBackground": "#007acc"
+    "statusBar.background": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f"
   },
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.tree.indent": 16
