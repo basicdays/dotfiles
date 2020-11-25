@@ -1,10 +1,5 @@
 # shellcheck shell=sh
 
-if [ -x /usr/libexec/path_helper ]; then
-    PATH=""
-	eval `/usr/libexec/path_helper -s`
-fi
-
 # Add to PATH without accidentally duplicating the value
 add_to_path() {
     local path_dir=$1
@@ -23,8 +18,12 @@ scandir() {
         done
     fi
 }
-#scandir "$ZDOTDIR/zprofile.d" 2> /dev/null
-scandir "$ZDOTDIR/zprofile.d"
+scandir "$BASHDOTDIR/bashprofile.d"
 
 unset add_to_path
 unset scandir
+
+# if running bash and .bashrc exists
+if [ -n "$BASH_VERSION" ] && [ -f "$BASHDOTDIR/.bashrc" ]; then
+    . "$BASHDOTDIR/.bashrc"
+fi

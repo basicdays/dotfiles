@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # shellcheck shell=sh
 
 # Expansion and Globbing
@@ -51,7 +50,7 @@ scandir() {
         done
     fi
 }
-scandir "$ZDOTDIR/.zshrc.d"
+scandir "$ZDOTDIR/zshrc.d"
 unset scandir
 
 
