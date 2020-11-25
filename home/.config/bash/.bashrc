@@ -9,7 +9,6 @@ esac
 scandir() {
     local _dir=$1
     if [ -d "$_dir" ]; then
-        echo $_dir
         for file in $_dir/*; do
             if [ -r "$file" ]; then
                 . "$file"
