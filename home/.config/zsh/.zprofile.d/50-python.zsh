@@ -20,7 +20,11 @@ find_py() {
             local_python_dir=$HOME/.local/lib/python$python_version
         fi
 
-        if [ -d "$local_python_dir/lib/python/site-packages" ]; then
+        # Ubuntu
+        if [ -d "$local_python_dir/site-packages" ]; then
+            export LOCAL_PYTHON_PACKAGES=${local_python_dir}/site-packages
+        # MacOS
+        elif [ -d "$local_python_dir/lib/python/site-packages" ]; then
             export LOCAL_PYTHON_PACKAGES=${local_python_dir}/lib/python/site-packages
         fi
         if [ -d "$local_python_dir/bin" ]; then
