@@ -1,63 +1,70 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.cursorBlinking": "phase",
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 14,
-  "editor.formatOnSave": true,
-  "editor.renderWhitespace": "boundary",
-  "editor.suggestSelection": "first",
-  "editor.tabCompletion": "on",
-  "explorer.autoReveal": false,
-  "files.associations": {
-    "Dockerfile.*": "dockerfile"
-  },
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
-  "telemetry.enableTelemetry": false,
-  "terminal.integrated.macOptionIsMeta": true,
-  "vim.foldfix": true,
-  "vim.hlsearch": true,
-  "vim.ignorecase": false,
-  "vim.leader": ",",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "<space>"],
-      "commands": [":nohlsearch"]
-    }
-  ],
-  "vim.statusBarColorControl": true,
-  "vim.textwidth": 120,
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "after": ["\"+", "+", "y"],
-      "before": ["<leader>", "y"]
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    {
-      "after": ["\"", "+", "d"],
-      "before": ["<leader>", "d"]
-    }
-  ],
-  "window.zoomLevel": 0,
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#007acc",
-    "statusBar.debuggingBackground": "#007acc",
-    "statusBar.noFolderBackground": "#007acc"
-  },
-  "workbench.colorTheme": "Visual Studio Dark",
-  "workbench.tree.indent": 16
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.cursorBlinking": "phase",
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.formatOnSave": true,
+    "editor.renderControlCharacters": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "explorer.autoReveal": false,
+    "files.associations": {
+        "Dockerfile.*": "dockerfile"
+    },
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "gitlens.advanced.fileHistoryFollowsRenames": true,
+    "remote.containers.defaultExtensions": [
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "richie5um2.vscode-sort-json"
+    ],
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.macOptionIsMeta": true,
+    "vim.foldfix": true,
+    "vim.hlsearch": true,
+    "vim.ignorecase": false,
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "<space>"],
+            "commands": [":nohlsearch"]
+        }
+    ],
+    "vim.statusBarColorControl": true,
+    "vim.textwidth": 120,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "after": ["\"+", "+", "y"],
+            "before": ["<leader>", "y"]
+        },
+        {
+            "after": ["\"", "+", "d"],
+            "before": ["<leader>", "d"]
+        }
+    ],
+    "window.zoomLevel": 0,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f"
+    },
+    "workbench.tree.indent": 16
 }
