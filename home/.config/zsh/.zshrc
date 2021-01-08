@@ -66,8 +66,7 @@ autoload -U +X bashcompinit && bashcompinit
 # . /usr/local/Cellar/bash-completion@2/2.11/share/bash-completion/bash_completion
 if [ -d /usr/local/etc/bash_completion.d/ ]; then
     for file in /usr/local/etc/bash_completion.d/*; do
-        if [ -r "$file" ] && [[ $file != *"git-flow"* ]] || [[ $file != "*tmux*" ]]; then
-        # if [ -r "$file" ]; then
+        if [ -r "$file" ] && [[ $file != *git-flow* ]] && [[ $file != *tmux* ]]; then
             . "$file"
         fi
     done
