@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 set -Eeou pipefail
 
-branch=dev
 remote=origin
-
-main_branch=master
-develop_branch=dev
 
 confirm_delete() {
 	local gone_branch=$1
@@ -16,8 +12,33 @@ confirm_delete() {
 	fi
 }
 
+has_branch() {
+	local ref=$1
+	local branches
+	branches=$(git branch --list "$ref")
+
+	test -n "$branches"
+}
+
+
+if has_branch main; then
+	main_branch=main
+elif has_branch master; then
+	main_branch=master
+else
+	echo "Unknown main branch"
+	exit 1
+fi
+if has_branch develop; then
+	develop_branch=develop
+elif has_branch dev; then
+	develop_branch=dev
+else
+	develop_branch=$main_branch
+fi
+
 git fetch --prune "$remote"
-git branch --merged "$branch" | grep -E -v "(^\*|$main_branch|$develop_branch)" | xargs git branch -d || :
+git branch --merged "$develop_branch" | grep -E -v "(^\*|$main_branch|$develop_branch)" | xargs git branch -d || :
 for gone_branch in $(git branch -vv | awk '/: gone]/{print $1}'); do
 	confirm_delete "$gone_branch"
 done
