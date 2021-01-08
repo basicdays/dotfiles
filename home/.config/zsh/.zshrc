@@ -64,9 +64,11 @@ unset scandir
 test -f $ZDOTDIR/zsh_completion.zsh && . $ZDOTDIR/zsh_completion.zsh
 autoload -U +X bashcompinit && bashcompinit
 # . /usr/local/Cellar/bash-completion@2/2.11/share/bash-completion/bash_completion
-for file in /usr/local/etc/bash_completion.d/*; do
-    if [ -r "$file" ] && [[ $file != "*tmux*" ]]; then
-    # if [ -r "$file" ]; then
-        . "$file"
-    fi
-done
+if [ -d /usr/local/etc/bash_completion.d/ ]; then
+    for file in /usr/local/etc/bash_completion.d/*; do
+        if [ -r "$file" ] && [[ $file != *"git-flow"* ]]; then
+        # if [ -r "$file" ]; then
+            . "$file"
+        fi
+    done
+fi
